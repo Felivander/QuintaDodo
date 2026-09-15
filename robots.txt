@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aveon.framer.website/sitemap.xml

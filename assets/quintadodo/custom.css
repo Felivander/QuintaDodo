@@ -1,0 +1,259 @@
+/* ==========================================================================
+   Quinta Dodó — ajustes propios sobre el layout base
+   Se cargan al final del <head> para ganarle a los estilos de Framer.
+   ========================================================================== */
+
+/* ---------- Portada: foto de fondo a todo el ancho ---------- */
+/* El elemento correcto es .framer-ab78dw (data-framer-name="Hero"): sticky,
+   z-index 1, y es el que traia el beige opaco rgb(232,224,214). Al ser
+   ancestro del contenido del hero, su background queda detras solo.
+   NO usar .framer-1p04h5a: pese a llamarse "BG" es un overlay fixed con
+   z-index 10 que cubre todo el viewport por encima del contenido.
+   El velo claro mantiene legible el texto oscuro: subi o baja los dos 0.45. */
+.framer-ab78dw {
+  background-image: url("hero_bg.jpg") !important;   /* la pileta, sin velo: ya no hay texto encima */
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* ---------- Portada: la quinta a pantalla completa, arriba de todo ---------- */
+/* OJO: .framer-nx6HF.framer-1m4j8br es el contenedor GENERICO de toda pagina
+   (Framer reusa ese mismo hash en el sitio entero, no es exclusivo del home).
+   Sin el :has() de abajo, esta portada aparecia arriba de TODAS las paginas
+   del sitio, tapando el contenido real de cada una. .framer-aiycup es la
+   seccion Hero real del home (data-framer-name="Hero") y NO existe en
+   ninguna otra pagina: sirve de ancla para que la regla aplique solo ahi.
+   El contenedor de pagina es flex: un ::before con order 0 se vuelve el primer
+   item visible, antes del Hero (order 1). entrada.JPG, sin texto encima. */
+.framer-nx6HF.framer-1m4j8br:has(.framer-aiycup)::before {
+  content: "Quinta Dod\00f3";
+  order: 0;
+  flex: 0 0 auto;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  background: url("portada_quinta.jpg") center center / cover no-repeat;
+
+  /* texto blanco centrado sobre la foto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(56px, 8vw, 150px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-align: center;
+  padding: 0 24px;
+  /* sombra suave para que se lea sobre cielo y paredes claras */
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+/* Toda la info del hero (tarjeta RECORRIDO, titular, lista de espacios,
+   chips): fuera. Queda solo el efecto de agua de Aveon mostrando la pileta. */
+.framer-1agxmwb {
+  display: none !important;
+}
+
+/* ---------- Efecto de agua del hero ---------- */
+/* El efecto de agua que se usa es el ParallaxImage original del template
+   (.framer-nkj9oa-container): canvas WebGL con distorsion sobre la imagen
+   bPjIC5vBE3OpRpyc1h7v7YfYRM, que ahora es la pileta (IMG_7328).
+   NO se usa el liquid-reveal de DODO: se probo, no gusto, y se quito. */
+
+/* ==========================================================================
+   HOME: estructura repensada para la quinta
+   El contenedor de pagina (.framer-nx6HF.framer-1m4j8br) es display:flex y
+   las secciones son sus items (el wrapper intermedio es display:contents),
+   asi que se reordenan con `order` sin tocar el HTML de Framer.
+   Todo lo que no lleve order queda en 0 (primero): por eso el CTA final y el
+   footer tambien llevan numero, para que no suban arriba del contenido.
+   ========================================================================== */
+.framer-aiycup  { order: 1; }   /* Hero: portada                               */
+.framer-z1004e  { order: 2; }   /* Case Study: tarjetas de los espacios (sube) */
+.framer-9j0qtz  { order: 3; }   /* Services: que ofrece la quinta              */
+.framer-1o5qyp2 { order: 4; }   /* Gallery: galeria arrastrable                */
+.framer-vfne17  { order: 5; }   /* About: la propuesta                         */
+.framer-6eq253  { order: 6; }   /* Process: como reservar                      */
+.framer-uyzntv  { order: 7; }   /* FAQs                                        */
+.framer-1ugre1w { order: 8; }   /* Journal: tarjetas de guia                   */
+.framer-17ihfxw-container { order: 9; }   /* CTA final "Listo para reservar"   */
+.framer-su08u6-container  { order: 10; }  /* Footer                            */
+
+/* Fuera del home: contadores con los numeros del template (200+, 98%...) y el
+   carrusel de testimonios, que sin resenas reales es un layout vacio. */
+.framer-1tpxl96,           /* Metrics     */
+.framer-2frp74 {           /* Testimonial */
+  display: none !important;
+}
+
+/* Formularios de newsletter (guia + footer): postean al endpoint de Framer
+   del template Aveon. La captacion es por WhatsApp/Booking. */
+.framer-1c60yxh,
+.framer-jy0vho,
+[data-framer-name^="Newsletter"] {
+  display: none !important;
+}
+
+/* ---------- /reservas: seccion de mapa (mapa.js la inserta) ---------- */
+.qd-map-section {
+  background: #1a1512;
+  padding: 64px 24px;
+}
+
+.qd-map-inner {
+  max-width: 977px;
+  margin: 0 auto;
+}
+
+.qd-map-tag {
+  color: #b5a898;
+}
+
+.qd-map-title {
+  margin: 6px 0 14px;
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 40px);
+  color: #f4f1eb;
+}
+
+.qd-map-text {
+  margin: 0 0 24px;
+  max-width: 60ch;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #cfc6ba;
+}
+
+.qd-map-frame {
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #3d3229;
+}
+
+.qd-map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 360px;
+  border: 0;
+}
+
+.qd-map-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: ui-monospace, "Geist Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #f4f1eb;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(244, 241, 235, 0.4);
+}
+
+.qd-map-link:hover { border-bottom-color: #b8845c; color: #b8845c; }
+
+/* ---------- /reservas: mugre del template Aveon ---------- */
+.framer-23p62,   /* tarjeta de contacto falsa: EMAIL / PHONE / MELBOURNE, 42 Smith St */
+.framer-fxztht,  /* formulario "Submit Ticket" de estudio de diseno (Amsterdam/Barcelona, budget $25k...) */
+.framer-1mgjjev, /* "[ FOLLOW US ]" Instagram/LinkedIn/Pinterest duplicados */
+.framer-z29ehe { /* "[ HORARIOS ]" Mon-Fri 9-6, horario de oficina de estudio */
+  display: none !important;
+}
+
+/* ---------- Restos de Aveon en fichas, CTA y nav ---------- */
+/* La caja del logo (.framer-guq3gc) es el item mas alto de la barra y le fija
+   la altura: con display:none el nav se achica de 68 a 49 px. Se oculta con
+   visibility para que siga sosteniendo el alto sin verse ni recibir clicks. */
+.framer-guq3gc {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Nav: ticker "CONCORDIA - ENTRE RIOS", fecha y reloj. Los links de WhatsApp
+   y Booking los pone sidebar.js como elemento propio (.qd-navlinks). */
+.framer-1jtl5dk,            /* nav: ticker de ciudad   */
+.framer-wq6owp,             /* nav: fecha              */
+.framer-176a6mk,            /* nav: reloj              */
+.framer-qkxelw,             /* /espacios: fila "PROPIEDAD / TODO EL AÑO" repetida en cada tarjeta */
+.framer-1xj0j2q,            /* /guia: chip de categoria "MODALIDADES" en cada tarjeta de articulo */
+.framer-1ldul7l,            /* /guia: "Tucker Rawlings", autor inventado del template Aveon        */
+.framer-18nu0lc,            /* ficha: CLIENT / YEAR / AREA / DURATION                        */
+.framer-pc20gp,             /* ficha: "ALL PROJECTS"                                         */
+.framer-1ifsizd,            /* ficha: "SERVICES PROVIDED" + chips                            */
+.framer-1tyu4vp-container,  /* ficha: rotulo "[ MORE PROJECTS ]"                             */
+.framer-p5kt6b-container {  /* CTA: avatares + estrellas + "200+ GLOBAL CLIENTS"             */
+  display: none !important;
+}
+
+/* ---------- Videos de Aveon: fuera ---------- */
+/* Home: bloque "Reel Showcase". About: contenedor del video del header.
+   Los dos contienen solo el <video>, sin texto, asi que se ocultan enteros.
+   No se usa una regla generica sobre <video> para no matar el video propio
+   que va a ir en la tarjeta RECORRIDO. Los .mp4 se borraron del mirror y
+   las referencias apuntan a "data:," para que no haya pedidos ni 404. */
+.framer-52kmmd,
+[data-framer-name="Reel Showcase"],
+.framer-1nwdm7b-container {
+  display: none !important;
+}
+
+/* ---------- Logo de Aveon en el nav: fuera ---------- */
+[data-framer-name="Logo Medium"],
+.framer-1g3d30t {
+  display: none !important;
+}
+
+/* Todo lo que sigue se oculta por CSS y no borrando el HTML: Framer vuelve a
+   pintar esos nodos al hidratar, asi que quitarlos del markup no alcanza. */
+
+/* 1. Prueba social del hero: 4 miniaturas + estrellas + leyenda. */
+.framer-b3ilw6-container {
+  display: none !important;
+}
+
+/* 2. Tira de logos de marcas del template (ULTRA CLEAR y compania).
+   Se oculta solo el carrusel; el titulo de la seccion se mantiene. */
+.framer-lpnsd1 {
+  display: none !important;
+}
+
+/* 3. Marcas de relleno del template dentro de las tarjetas (40x40).
+   Son logos placeholder genericos, no marcas reales. */
+.framer-fnt7hs-container {
+  display: none !important;
+}
+
+/* 3b. Red de seguridad: cualquier otro placeholder suelto, por archivo.
+   LOGOIPSUM, ULTRA CLEAR y los isotipos geometricos del template. */
+img[src*="SWktC2kDTh4OjgOWjHX5FhObWY"],   /* ULTRA CLEAR */
+img[src*="cjWt2J5ACwQezjesg4q3uX5Gv0"],   /* LOGOIPSUM */
+img[src*="eT2b7XhmunUwFgUZ01xGzZOa0U"],
+img[src*="U3J3LorbS00fF3EUr959umL0V6o"],
+img[src*="WgqoIR0XVKIP3HfV1cFN5t2rxo"],
+img[src*="yVgjeuzt3dMYQBy5IcJocf2ly2I"],
+img[src*="zwntZ4XPeRh7xhSNqMT1b8DLE"],
+img[src*="JkVWAw7QfWEZEAAaAqeKKiDGMg"],
+img[src*="YEbjdfHAm88FomPFKwrx6nyr8tI"],
+img[src*="aXuOaf2QEVQtLLLTbZ5QujTdXE8"],
+img[src*="cSjb2vMWyzEgj46RhwNwnKiOY"],
+img[src*="eFdTx5pmVQKWNWvXEWwIrVM1k"],
+img[src*="N7u9MwYIkH6N6nVXHUmdYGN2I"],
+img[src*="4COHChJQp5b8M5aB7dVrlsdU5E"],
+img[src*="bu0dXRSJjBtjff52pKx7d4wY8"],
+img[src*="IX9DRFp5Gv3K2ldwwapozvYAY"],
+img[src*="t75VDe99FQR8kvgOG7P6x6XP0"] {
+  display: none !important;
+}
+
+/* 4. Botones flotantes de Framer: Remix for Free / Hire for Custom Site /
+   Made in Framer. Son tres elementos distintos: el badge propio de Framer
+   mas dos contenedores fijos del template. */
+#__framer-badge-container,
+[id^="__framer-badge"],
+.framer-16cm5vu-container,   /* Remix for Free */
+.framer-177nqaf-container {  /* Hire for Custom Site */
+  display: none !important;
+}
+
