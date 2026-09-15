@@ -23,7 +23,21 @@
     return cur;
   }
 
+  // traducciones simples de hojas de texto exactas (sin rotulo entre [ ])
+  var TEXTOS = { "recent posts": "Más artículos" };
+
   function limpiar() {
+    // 0) hojas de texto sueltas que hay que traducir tal cual
+    var hojasTexto = document.querySelectorAll("p, span, div, h1, h2, h3, h4, h5, h6");
+    for (var j = 0; j < hojasTexto.length; j++) {
+      var ht = hojasTexto[j];
+      if (ht.children.length !== 0 || ht.dataset.qdTexto) continue;
+      var key = (ht.textContent || "").trim().toLowerCase();
+      if (TEXTOS[key]) {
+        ht.textContent = TEXTOS[key];
+        ht.dataset.qdTexto = "1";
+      }
+    }
     // 1) rótulos: ocultar el componente Caption completo
     var nodos = document.querySelectorAll(".framer-nTVwd, .framer-bznlad, [data-framer-name='Caption']");
     for (var i = 0; i < nodos.length; i++) {
@@ -71,7 +85,7 @@
       { rx: /\/guia$/,       es: "Guía" },
       { rx: /\/reservas$/,   es: "Reservas" }
     ];
-    document.querySelectorAll("a[href]").forEach(function (a) {
+    document.querySelectorAll("a").forEach(function (a) {
       if (a.dataset.qdFooterFix) return;
       var href = a.getAttribute("href") || "";
       // el componente de texto rodante mete un <style> DENTRO del <a>, cuyo
@@ -82,6 +96,11 @@
         // link al 404 en un pie de pagina: no tiene sentido, se saca entero
         var wrap = a.closest("div") || a;
         wrap.style.setProperty("display", "none", "important");
+        a.dataset.qdFooterFix = "1";
+        return;
+      }
+      if (/back to articles\b/i.test(txt)) {
+        a.textContent = "← Volver a la guía";
         a.dataset.qdFooterFix = "1";
         return;
       }
