@@ -186,7 +186,10 @@
 .framer-pc20gp,             /* ficha: "ALL PROJECTS"                                         */
 .framer-1ifsizd,            /* ficha: "SERVICES PROVIDED" + chips                            */
 .framer-1tyu4vp-container,  /* ficha: rotulo "[ MORE PROJECTS ]"                             */
-.framer-p5kt6b-container {  /* CTA: avatares + estrellas + "200+ GLOBAL CLIENTS"             */
+.framer-p5kt6b-container,   /* CTA: avatares + estrellas + "200+ GLOBAL CLIENTS"             */
+.framer-wqjosw,             /* /reservas: bloque "[ 3 PASOS ]" del template                  */
+.framer-1mgjjev,            /* /reservas: "Follow Us" con Instagram/LinkedIn/Pinterest falsos */
+.framer-z29ehe {            /* /reservas: "Horarios" (Mon-Fri 9-6, etc.) inventado           */
   display: none !important;
 }
 

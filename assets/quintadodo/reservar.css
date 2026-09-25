@@ -79,16 +79,12 @@
   color: #1a1512;
   background: #fff;
   border: 1px solid #ddd4c9;
-  border-radius: 999px;
-  padding: 11px 16px;
+  border-radius: 0;
+  padding: 11px 14px;
   outline: none;
   transition: border-color 0.15s ease;
   -webkit-appearance: none;
   appearance: none;
-}
-
-.qd-book-field textarea {
-  border-radius: 18px;
 }
 
 .qd-book-field select {
@@ -129,7 +125,7 @@
   gap: 10px;
   width: 100%;
   padding: 14px 20px;
-  border-radius: 999px;
+  border-radius: 0;
   border: none;
   font-family: inherit;
   font-size: 14px;
