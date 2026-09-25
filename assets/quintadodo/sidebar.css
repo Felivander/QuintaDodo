@@ -321,9 +321,44 @@
 .qd-navlink--booking { background: #1a1512; color: #fff; border-color: #1a1512; }
 .qd-navlink--booking:hover { background: #b8845c; border-color: #b8845c; }
 
+/* ---------- nav: "[ Reservar ]" (reemplaza las pildoras de WhatsApp/Booking) ---------- */
+.qd-nav-reserve {
+  position: fixed;
+  top: 0;
+  right: 24px;
+  height: 68px;
+  z-index: 2147482000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 2px;
+  text-decoration: none;
+  color: #1a1512;
+}
+
+.qd-nav-reserve .qd-tag {
+  font-size: 10px;
+  color: #6b5d50;
+  text-align: right;
+}
+
+.qd-nav-reserve-txt {
+  font-size: 13px;
+  font-weight: 600;
+  color: #b8845c;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.qd-nav-reserve:hover .qd-nav-reserve-txt { text-decoration: underline; }
+
 @media (max-width: 640px) {
   .qd-navlinks { right: 12px; gap: 6px; }
   .qd-navlink { padding: 0 12px; font-size: 10px; }
+  .qd-nav-reserve { right: 12px; }
+  .qd-nav-reserve .qd-tag { font-size: 9px; }
+  .qd-nav-reserve-txt { font-size: 12px; }
   .qd-drawer { max-width: none; padding: 24px; }
   .qd-preview { display: none; }
   .qd-link { font-size: 25px; }

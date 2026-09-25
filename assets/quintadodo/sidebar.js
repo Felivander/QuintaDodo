@@ -207,24 +207,20 @@
     document.body.appendChild(b);
   }
 
-  // ---- links del nav: WhatsApp + Booking (placeholder hasta tener el link real) ----
-  var BOOKING = "https://www.booking.com/";   // PLACEHOLDER: reemplazar por el link real de la quinta
+  // link real de la propiedad en Booking.com (lo reusa tambien reservar.js)
+  var BOOKING = "https://www.booking.com/hotel/ar/quinta-dodo.es-ar.html";
+  window.QD_BOOKING_URL = BOOKING;
 
-  // iconos de linea en un solo tono (currentColor): toman el color del boton
-  var ICON_CHAT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<path d="M4 12a8 8 0 1 1 3.6 6.7L4 20l1.3-3.6A8 8 0 0 1 4 12z"/>' +
-    '<path d="M9 10.5c.4 2 2 3.6 4 4l1.4-1.1 1.6.6-.2 1.6c-3.6.4-6.9-2.9-6.5-6.5l1.6-.2.6 1.6L9 10.5z"/></svg>';
-  var ICON_BED = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<path d="M3 18V8"/><path d="M3 12h18v6"/><path d="M3 16h18"/>' +
-    '<path d="M7 12V9.5A1.5 1.5 0 0 1 8.5 8h2A1.5 1.5 0 0 1 12 9.5V12"/><path d="M21 12v-1a2 2 0 0 0-2-2h-7"/></svg>';
-
-  // pildoras con icono de linea (currentColor)
+  // nav: un solo link de texto "[ Reservar ]" (reemplaza las pildoras de
+  // WhatsApp/Booking), con el mismo estilo que el pie del drawer. Lleva a
+  // /reservas, donde vive el formulario real.
   function navlinks() {
-    var box = document.createElement("div");
-    box.className = "qd-navlinks";
+    var box = document.createElement("a");
+    box.className = "qd-nav-reserve";
+    box.href = "/reservas";
     box.innerHTML =
-      '<a class="qd-navlink" href="' + WA + '" target="_blank" rel="noopener noreferrer">' + ICON_CHAT + '<span>WhatsApp</span></a>' +
-      '<a class="qd-navlink qd-navlink--booking" href="' + BOOKING + '" target="_blank" rel="noopener noreferrer">' + ICON_BED + '<span>Booking</span></a>';
+      '<span class="qd-tag">[ Reservar ]</span>' +
+      '<span class="qd-nav-reserve-txt">Consultar fecha</span>';
     document.body.appendChild(box);
   }
 
