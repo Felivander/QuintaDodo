@@ -165,7 +165,12 @@
 .framer-23p62,   /* tarjeta de contacto falsa: EMAIL / PHONE / MELBOURNE, 42 Smith St */
 .framer-fxztht,  /* formulario "Submit Ticket" de estudio de diseno (Amsterdam/Barcelona, budget $25k...) */
 .framer-1mgjjev, /* "[ FOLLOW US ]" Instagram/LinkedIn/Pinterest duplicados */
-.framer-z29ehe { /* "[ HORARIOS ]" Mon-Fri 9-6, horario de oficina de estudio */
+.framer-z29ehe,  /* "[ HORARIOS ]" Mon-Fri 9-6, horario de oficina de estudio */
+.framer-11nlytp-container, /* mapa embebido de Framer B.V. (la empresa del template, no la quinta) */
+.framer-j4ms {   /* header "[ LA PROPUESTA ]" + titulo: su altura viene fija en
+                     px desde el template y no se achica al ocultar la tarjeta
+                     de contacto de arriba, asi que queda una franja negra
+                     vacia arriba del mapa */
   display: none !important;
 }
 
@@ -194,9 +199,7 @@
 .framer-1ifsizd,            /* ficha: "SERVICES PROVIDED" + chips                            */
 .framer-1tyu4vp-container,  /* ficha: rotulo "[ MORE PROJECTS ]"                             */
 .framer-p5kt6b-container,   /* CTA: avatares + estrellas + "200+ GLOBAL CLIENTS"             */
-.framer-wqjosw,             /* /reservas: bloque "[ 3 PASOS ]" del template                  */
-.framer-1mgjjev,            /* /reservas: "Follow Us" con Instagram/LinkedIn/Pinterest falsos */
-.framer-z29ehe {            /* /reservas: "Horarios" (Mon-Fri 9-6, etc.) inventado           */
+.framer-wqjosw {            /* /reservas: bloque "[ 3 PASOS ]" del template                  */
   display: none !important;
 }
 
