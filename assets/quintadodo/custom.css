@@ -101,6 +101,9 @@
 .qd-map-section {
   background: #1a1512;
   padding: 64px 24px;
+  width: 100%;
+  align-self: stretch;
+  box-sizing: border-box;
 }
 
 .qd-map-inner {
@@ -108,7 +111,11 @@
   margin: 0 auto;
 }
 
-.qd-map-tag {
+/* especifico contra .qd-tag (sidebar.css): esa regla pone color con
+   var(--qd-muted), variable que solo existe dentro de .qd-drawer-root,
+   asi que fuera del drawer es invalida y el texto hereda negro en vez
+   de caer a esta declaracion. Con mas especificidad, esta gana siempre. */
+.qd-map-section .qd-map-tag {
   color: #b5a898;
 }
 
