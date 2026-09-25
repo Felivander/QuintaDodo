@@ -107,10 +107,16 @@ class MirrorHandler(SimpleHTTPRequestHandler):
 
     def guess_type(self, path):
         if path.endswith(".framercms"):
-            return "application/javascript"
+            return "application/javascript; charset=utf-8"
         if path.endswith(".mjs"):
-            return "text/javascript"
-        return super().guess_type(path)
+            return "text/javascript; charset=utf-8"
+        ctype = super().guess_type(path)
+        # Sin "; charset=utf-8" el navegador adivina la codificacion de los
+        # .js/.css/.html y corrompe los emojis (UTF-8 valido) del mensaje de
+        # WhatsApp del formulario de reserva, mostrando "?" en vez del emoji.
+        if ctype.startswith("text/") or ctype in ("application/javascript",):
+            ctype += "; charset=utf-8"
+        return ctype
 
     def log_message(self, fmt, *args):
         pass  # quiet
