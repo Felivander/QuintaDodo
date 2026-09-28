@@ -66,31 +66,10 @@
   gap: 10px;
 }
 
-.qd-slashes {
-  font-family: ui-monospace, "Geist Mono", SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--qd-accent);
-  line-height: 1.4;
-}
-
-.qd-name {
+.qd-brand-logo {
   display: block;
-  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-  font-size: 21px;
-  font-weight: 700;
-  color: var(--qd-dark);
-  line-height: 1.2;
-}
-
-.qd-tagline {
-  display: block;
-  margin-top: 3px;
-  font-family: ui-monospace, "Geist Mono", SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--qd-muted);
+  height: 44px;
+  width: auto;
 }
 
 .qd-close {

@@ -101,9 +101,7 @@
     head.className = "qd-head";
     head.innerHTML =
       '<div class="qd-brand">' +
-        '<span class="qd-slashes">///</span>' +
-        '<span><span class="qd-name">Quinta Dodó</span>' +
-        '<span class="qd-tagline">Campo &amp; Hospedaje Exclusivo</span></span>' +
+        '<img class="qd-brand-logo" src="/assets/quintadodo/logo_dodo_dark.png" alt="Quinta Dodó">' +
       '</div>';
     var close = document.createElement("button");
     close.className = "qd-close";
