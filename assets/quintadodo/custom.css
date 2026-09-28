@@ -163,6 +163,16 @@
   display: none !important;
 }
 
+/* ---------- /espacios/dormitorios: sacar una foto de la galeria de 2 ---------- */
+/* .framer-1rxno6y es la clase generica del "segundo lugar" de este par de
+   fotos, reusada en varias paginas de /espacios con OTRA foto cada vez: no
+   se puede ocultar la clase sola. Se apunta con :has() al src exacto de esta
+   foto puntual para no afectar a las demas paginas. Al ocultarla, la otra
+   foto del par (flex:1 0 0) crece sola y ocupa todo el ancho. */
+.framer-1rxno6y:has(img[src*="Wgu3Ab5eM99y1JJTmyvVdOEB4Iw"]) {
+  display: none !important;
+}
+
 /* ---------- Restos de Aveon en fichas, CTA y nav ---------- */
 /* La caja del logo (.framer-guq3gc) es el item mas alto de la barra y le fija
    la altura: con display:none el nav se achica de 68 a 49 px. Se oculta con
