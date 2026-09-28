@@ -27,28 +27,17 @@
    El contenedor de pagina es flex: un ::before con order 0 se vuelve el primer
    item visible, antes del Hero (order 1). entrada.JPG, sin texto encima. */
 .framer-nx6HF.framer-1m4j8br:has(.framer-aiycup)::before {
-  content: "Quinta Dod\00f3";
+  content: "";
   order: 0;
   flex: 0 0 auto;
   width: 100%;
   height: 100vh;
   box-sizing: border-box;
-  background: url("portada_quinta.jpg") center center / cover no-repeat;
-
-  /* texto blanco centrado sobre la foto */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-  font-weight: 400;
-  font-size: clamp(56px, 8vw, 150px);
-  line-height: 1;
-  letter-spacing: 0.01em;
-  text-align: center;
-  padding: 0 24px;
-  /* sombra suave para que se lea sobre cielo y paredes claras */
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.35);
+  /* logo centrado, en capa arriba de la foto de fondo */
+  background-image: url("logo_dodo.png"), url("portada_quinta.jpg");
+  background-position: center center, center center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: clamp(220px, 26vw, 420px) auto, cover;
 }
 
 /* Toda la info del hero (tarjeta RECORRIDO, titular, lista de espacios,
