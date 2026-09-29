@@ -26,11 +26,12 @@
   background-size: clamp(220px, 26vw, 420px) auto, cover;
 }
 
-/* Hero original de Aveon (.framer-aiycup: foto de la pileta con velo + efecto
-   de agua WebGL): fuera. Se oculta con CSS y no se borra del HTML porque Framer
-   lo vuelve a montar al hidratar. Tiene que seguir en el DOM: el :has() de la
-   portada de arriba lo usa de ancla para que solo aparezca en el home. */
-.framer-aiycup {
+/* Hero original de Aveon: se saca el div .framer-ab78dw (foto de la pileta,
+   efecto de agua e info del hero) pero la seccion .framer-aiycup SE QUEDA,
+   porque adentro vive la galeria arrastrable de fotos (.framer-bk1czx).
+   Se oculta con CSS y no se borra del HTML porque Framer lo vuelve a montar al
+   hidratar. .framer-aiycup tambien es el ancla del :has() de la portada. */
+.framer-ab78dw {
   display: none !important;
 }
 
@@ -42,6 +43,7 @@
    Todo lo que no lleve order queda en 0 (primero): por eso el CTA final y el
    footer tambien llevan numero, para que no suban arriba del contenido.
    ========================================================================== */
+.framer-aiycup  { order: 1; }   /* Hero: queda solo la galeria arrastrable     */
 .framer-z1004e  { order: 2; }   /* Case Study: tarjetas de los espacios (sube) */
 .framer-9j0qtz  { order: 3; }   /* Services: que ofrece la quinta              */
 .framer-1o5qyp2 { order: 4; }   /* Gallery: galeria arrastrable                */
@@ -263,5 +265,11 @@ footer img[src*="6iyf6wxTiIm5vh1UGTqOnQPcCwg"] {
 /* Redes que la quinta no usa. Los links apuntaban a WhatsApp, no a una red. */
 .framer-1wbd4qf-container,  /* Pinterest   */
 .framer-1p9m64p-container { /* X (Twitter) */
+  display: none !important;
+}
+
+/* ---------- Efecto vintage: fuera ---------- */
+/* Canvas de grano de pelicula (dentro del overlay fijo "BG"). */
+.framer-1t89abu-container {
   display: none !important;
 }
