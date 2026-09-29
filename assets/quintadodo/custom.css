@@ -3,20 +3,6 @@
    Se cargan al final del <head> para ganarle a los estilos de Framer.
    ========================================================================== */
 
-/* ---------- Portada: foto de fondo a todo el ancho ---------- */
-/* El elemento correcto es .framer-ab78dw (data-framer-name="Hero"): sticky,
-   z-index 1, y es el que traia el beige opaco rgb(232,224,214). Al ser
-   ancestro del contenido del hero, su background queda detras solo.
-   NO usar .framer-1p04h5a: pese a llamarse "BG" es un overlay fixed con
-   z-index 10 que cubre todo el viewport por encima del contenido.
-   El velo claro mantiene legible el texto oscuro: subi o baja los dos 0.45. */
-.framer-ab78dw {
-  background-image: url("hero_bg.jpg") !important;   /* la pileta, sin velo: ya no hay texto encima */
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-}
-
 /* ---------- Portada: la quinta a pantalla completa, arriba de todo ---------- */
 /* OJO: .framer-nx6HF.framer-1m4j8br es el contenedor GENERICO de toda pagina
    (Framer reusa ese mismo hash en el sitio entero, no es exclusivo del home).
@@ -25,7 +11,7 @@
    seccion Hero real del home (data-framer-name="Hero") y NO existe en
    ninguna otra pagina: sirve de ancla para que la regla aplique solo ahi.
    El contenedor de pagina es flex: un ::before con order 0 se vuelve el primer
-   item visible, antes del Hero (order 1). entrada.JPG, sin texto encima. */
+   item visible, antes del resto de las secciones (order 2 en adelante). */
 .framer-nx6HF.framer-1m4j8br:has(.framer-aiycup)::before {
   content: "";
   order: 0;
@@ -40,17 +26,13 @@
   background-size: clamp(220px, 26vw, 420px) auto, cover;
 }
 
-/* Toda la info del hero (tarjeta RECORRIDO, titular, lista de espacios,
-   chips): fuera. Queda solo el efecto de agua de Aveon mostrando la pileta. */
-.framer-1agxmwb {
+/* Hero original de Aveon (.framer-aiycup: foto de la pileta con velo + efecto
+   de agua WebGL): fuera. Se oculta con CSS y no se borra del HTML porque Framer
+   lo vuelve a montar al hidratar. Tiene que seguir en el DOM: el :has() de la
+   portada de arriba lo usa de ancla para que solo aparezca en el home. */
+.framer-aiycup {
   display: none !important;
 }
-
-/* ---------- Efecto de agua del hero ---------- */
-/* El efecto de agua que se usa es el ParallaxImage original del template
-   (.framer-nkj9oa-container): canvas WebGL con distorsion sobre la imagen
-   bPjIC5vBE3OpRpyc1h7v7YfYRM, que ahora es la pileta (IMG_7328).
-   NO se usa el liquid-reveal de DODO: se probo, no gusto, y se quito. */
 
 /* ==========================================================================
    HOME: estructura repensada para la quinta
@@ -60,7 +42,6 @@
    Todo lo que no lleve order queda en 0 (primero): por eso el CTA final y el
    footer tambien llevan numero, para que no suban arriba del contenido.
    ========================================================================== */
-.framer-aiycup  { order: 1; }   /* Hero: portada                               */
 .framer-z1004e  { order: 2; }   /* Case Study: tarjetas de los espacios (sube) */
 .framer-9j0qtz  { order: 3; }   /* Services: que ofrece la quinta              */
 .framer-1o5qyp2 { order: 4; }   /* Gallery: galeria arrastrable                */
