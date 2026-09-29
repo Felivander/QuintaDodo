@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /
+
+# URLs con barra final -> sin barra (mismo criterio que el resto del sitio;
+# los links internos son todos sin barra final)
+RewriteCond %{REQUEST_URI} !^/$
+RewriteCond %{REQUEST_URI} ^(.+)/$
+RewriteRule ^ %1 [R=301,L]
+
+# /ruta (sin extension) -> /ruta/index.html si existe esa carpeta
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
+RewriteRule ^(.*)$ $1/index.html [L]
+
+ErrorDocument 404 /404/index.html
