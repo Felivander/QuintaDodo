@@ -264,7 +264,8 @@ footer img[src*="6iyf6wxTiIm5vh1UGTqOnQPcCwg"] {
 
 /* Redes que la quinta no usa. Los links apuntaban a WhatsApp, no a una red. */
 .framer-1wbd4qf-container,  /* Pinterest   */
-.framer-1p9m64p-container { /* X (Twitter) */
+.framer-1p9m64p-container,  /* X (Twitter) */
+.framer-1xtvy61-container { /* Behance (solo aparece en la variante de escritorio, >=1350px) */
   display: none !important;
 }
 
