@@ -24,6 +24,18 @@
   var ICON_X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>';
   var ICON_MENU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>';
 
+  // ---- efecto vintage (grano de pelicula): prendido por defecto, el slider del
+  // nav lo apaga y se acuerda de la eleccion. Se aplica ya al cargar el script
+  // para que no parpadee el grano en quien lo tiene apagado.
+  var VINTAGE_KEY = "qd-vintage";
+  function vintageApagado() {
+    try { return localStorage.getItem(VINTAGE_KEY) === "off"; } catch (e) { return false; }
+  }
+  function aplicarVintage(apagado) {
+    document.documentElement.classList.toggle("qd-sin-vintage", apagado);
+  }
+  aplicarVintage(vintageApagado());
+
   var root, built = false;
 
   // ---- presentacion de 5 fotos por item, con fundido ----
@@ -213,7 +225,7 @@
 
   // nav: dos links de texto con el mismo estilo que el pie del drawer:
   // "[ Reservar ]" lleva a /reservas (formulario) y "[ Booking ]" abre la
-  // propiedad en Booking.com.
+  // propiedad en Booking.com; mas el slider "[ Vintage ]" del grano.
   function navlinks() {
     var box = document.createElement("div");
     box.className = "qd-nav-right";
@@ -226,6 +238,28 @@
         '<span class="qd-tag">[ Booking ]</span>' +
         '<span class="qd-nav-reserve-txt">Reservar online ↗</span>' +
       '</a>';
+
+    var sw = document.createElement("button");
+    sw.type = "button";
+    sw.className = "qd-nav-reserve qd-vintage";
+    sw.setAttribute("role", "switch");
+    sw.title = "Efecto vintage (grano de película)";
+    sw.innerHTML =
+      '<span class="qd-tag">[ Vintage ]</span>' +
+      '<span class="qd-switch" aria-hidden="true"><span class="qd-switch-knob"></span></span>';
+    function pintarSwitch() {
+      var on = !document.documentElement.classList.contains("qd-sin-vintage");
+      sw.setAttribute("aria-checked", on ? "true" : "false");
+    }
+    sw.addEventListener("click", function () {
+      var apagar = !document.documentElement.classList.contains("qd-sin-vintage");
+      aplicarVintage(apagar);
+      try { localStorage.setItem(VINTAGE_KEY, apagar ? "off" : "on"); } catch (e) {}
+      pintarSwitch();
+    });
+    pintarSwitch();
+    box.appendChild(sw);
+
     document.body.appendChild(box);
   }
 

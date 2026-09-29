@@ -24,7 +24,29 @@
   }
 
   // traducciones simples de hojas de texto exactas (sin rotulo entre [ ])
-  var TEXTOS = { "recent posts": "Más artículos" };
+  var TEXTOS = {
+    "recent posts": "Más artículos",
+    "crafted with care in concordia, entre ríos.": "Hecho con cariño en Concordia, Entre Ríos.",
+    "© 2026 quinta dodó design. all rights reserved.": "© 2026 Quinta Dodó. Todos los derechos reservados."
+  };
+
+  // Cambia el texto de un link de "texto rodante" sin romperle el estilo: el
+  // componente pinta una letra por <span> dentro de un <p>, con fuente y tamano
+  // inline en cada <span>. Asignar a.textContent los borraba y el link quedaba
+  // como un <a> azul sin estilo, asi que se reconstruyen clonando el primero.
+  function setTextoRodante(a, texto) {
+    var p = a.querySelector("p[class^='rolling-text-inner']");
+    var molde = p && p.querySelector("span");
+    if (!molde) { a.textContent = texto; return; }
+    var frag = document.createDocumentFragment();
+    Array.from(texto).forEach(function (ch) {
+      var s = molde.cloneNode(false);
+      s.textContent = ch === " " ? " " : ch;
+      frag.appendChild(s);
+    });
+    p.textContent = "";
+    p.appendChild(frag);
+  }
 
   function limpiar() {
     // 0) hojas de texto sueltas que hay que traducir tal cual
@@ -100,14 +122,14 @@
         return;
       }
       if (/back to articles\b/i.test(txt)) {
-        a.textContent = "← Volver a la guía";
+        setTextoRodante(a, "← Volver a la guía");
         a.dataset.qdFooterFix = "1";
         return;
       }
       if (!/^(home|about|services|work|journal|contact)\b/i.test(txt)) return;
       var m = FOOTER_NAV.find(function (f) { return f.rx.test(href); });
       if (m) {
-        a.textContent = m.es;
+        setTextoRodante(a, m.es);
         a.dataset.qdFooterFix = "1";
       }
     });

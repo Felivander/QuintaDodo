@@ -253,3 +253,15 @@ img[src*="t75VDe99FQR8kvgOG7P6x6XP0"] {
   display: none !important;
 }
 
+/* ---------- Footer ---------- */
+/* La foto de fondo llega con object-fit:fill inline: en desktop el footer es
+   mas ancho que alto y la foto se estiraba. cover la recorta sin deformarla. */
+footer img[src*="6iyf6wxTiIm5vh1UGTqOnQPcCwg"] {
+  object-fit: cover !important;
+}
+
+/* Redes que la quinta no usa. Los links apuntaban a WhatsApp, no a una red. */
+.framer-1wbd4qf-container,  /* Pinterest   */
+.framer-1p9m64p-container { /* X (Twitter) */
+  display: none !important;
+}
