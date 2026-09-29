@@ -17,7 +17,7 @@
     { t: "Parque & Animales",       h: "/espacios/parque-cancha-granja",    p: "parque" },
     { t: "Dormitorios",             h: "/espacios/dormitorios",           p: "dormitorios" },
     { t: "Galería de Fotos",        h: "/espacios",                               p: "fotos" },
-    { t: "Ubicación & Mapa",        h: "/reservas",                            p: "ubicacion" },
+    { t: "Ubicación & Mapa",        h: "/reservas#mapa",                       p: "ubicacion" },
     { t: "Consultar WhatsApp",      h: WA, p: "whatsapp", accent: true, blank: true }
   ];
 
@@ -101,7 +101,9 @@
     head.className = "qd-head";
     head.innerHTML =
       '<div class="qd-brand">' +
-        '<img class="qd-brand-logo" src="/assets/quintadodo/logo_dodo_dark.png" alt="Quinta Dodó">' +
+        '<a class="qd-brand-link" href="/" aria-label="Quinta Dodó, ir al inicio">' +
+          '<img class="qd-brand-logo" src="/assets/quintadodo/logo_dodo_dark.png" alt="Quinta Dodó">' +
+        '</a>' +
       '</div>';
     var close = document.createElement("button");
     close.className = "qd-close";
@@ -209,16 +211,21 @@
   var BOOKING = "https://www.booking.com/hotel/ar/quinta-dodo.es-ar.html";
   window.QD_BOOKING_URL = BOOKING;
 
-  // nav: un solo link de texto "[ Reservar ]" (reemplaza las pildoras de
-  // WhatsApp/Booking), con el mismo estilo que el pie del drawer. Lleva a
-  // /reservas, donde vive el formulario real.
+  // nav: dos links de texto con el mismo estilo que el pie del drawer:
+  // "[ Reservar ]" lleva a /reservas (formulario) y "[ Booking ]" abre la
+  // propiedad en Booking.com.
   function navlinks() {
-    var box = document.createElement("a");
-    box.className = "qd-nav-reserve";
-    box.href = "/reservas";
+    var box = document.createElement("div");
+    box.className = "qd-nav-right";
     box.innerHTML =
-      '<span class="qd-tag">[ Reservar ]</span>' +
-      '<span class="qd-nav-reserve-txt">Consultar fecha</span>';
+      '<a class="qd-nav-reserve" href="/reservas">' +
+        '<span class="qd-tag">[ Reservar ]</span>' +
+        '<span class="qd-nav-reserve-txt">Consultar fecha</span>' +
+      '</a>' +
+      '<a class="qd-nav-reserve qd-nav-booking" href="' + BOOKING + '" target="_blank" rel="noopener noreferrer">' +
+        '<span class="qd-tag">[ Booking ]</span>' +
+        '<span class="qd-nav-reserve-txt">Reservar online ↗</span>' +
+      '</a>';
     document.body.appendChild(box);
   }
 

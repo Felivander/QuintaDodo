@@ -21,6 +21,7 @@
   function crearSeccion() {
     var sec = document.createElement("section");
     sec.className = "qd-map-section";
+    sec.id = "mapa";
     sec.innerHTML =
       '<div class="qd-map-inner">' +
         '<span class="qd-tag qd-map-tag">[ Ubicación ]</span>' +
@@ -44,8 +45,24 @@
     var viejo = document.querySelector(".framer-23p62"); // tarjeta falsa oculta por CSS
     if (!viejo) return; // no estamos en /reservas
     if (document.querySelector(".qd-map-section")) return; // ya esta
-    var host = viejo.closest("section") || viejo;
+    // Va DESPUES de la seccion de contacto (la del formulario de reserva):
+    // antes quedaba arriba de todo y "Consultar fecha" aterrizaba en el mapa.
+    var host = document.querySelector(".framer-r1pc6r") || viejo.closest("section") || viejo;
     host.insertAdjacentElement("afterend", crearSeccion());
+    irAlMapa();
+  }
+
+  // /reservas#mapa (link "Ubicación & Mapa" del menu): el ancla no existe al
+  // cargar porque la seccion se inserta por JS, y Framer todavia mueve cosas
+  // despues de hidratar. Se reintenta hasta que la pagina se estabiliza.
+  var irAlMapaTimer = null, irAlMapaIntentos = 0;
+  function irAlMapa() {
+    if (location.hash !== "#mapa" || irAlMapaIntentos >= 5) return;
+    clearTimeout(irAlMapaTimer);
+    irAlMapaTimer = setTimeout(function () {
+      var m = document.getElementById("mapa");
+      if (m) { irAlMapaIntentos++; m.scrollIntoView(); }
+    }, 600);
   }
 
   function init() {
