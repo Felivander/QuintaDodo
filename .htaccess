@@ -1,20 +1,20 @@
-# Apache agrega la barra final sola cuando la URL es una carpeta (DirectorySlash);
-# eso pelea con la regla de abajo que la sacaba y quedaba en loop infinito.
+AddDefaultCharset UTF-8
+
+# Apache agrega la barra final solo cuando la URL es una carpeta (DirectorySlash);
+# eso pelearia con la regla de abajo que la saca. Se apaga y se sirve el index.html
+# de la carpeta con un rewrite interno.
 DirectorySlash Off
 
 RewriteEngine On
 RewriteBase /
 
-# /ruta/ (con barra, carpeta existente) -> /ruta (sin barra), asi queda como
-# los links internos del sitio. Con DirectorySlash apagado no vuelve a entrar
-# en loop: esta regla corre una sola vez y de ahi la sirve la de abajo.
+# /ruta/ (con barra) -> /ruta (sin barra), como los links internos del sitio
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_URI} !^/$
 RewriteCond %{REQUEST_URI} ^(.+)/$
 RewriteRule ^ %1 [R=301,L]
 
-# /ruta (sin barra, carpeta existente) -> sirve /ruta/index.html sin cambiar
-# la URL del navegador.
+# /ruta (sin barra, carpeta existente) -> /ruta/index.html sin cambiar la URL
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}/index.html -f
 RewriteRule ^(.*[^/])$ $1/index.html [L]
@@ -22,20 +22,23 @@ RewriteRule ^(.*[^/])$ $1/index.html [L]
 ErrorDocument 404 /404/index.html
 
 # ---- cache ----
-# El servidor manda max-age=7 dias por defecto. El HTML, y sobre todo nuestro
-# CSS/JS (assets/quintadodo, ver el .htaccess de esa carpeta), cambian con cada
-# deploy: si el navegador guarda un css viejo con un js nuevo, la pagina se ve
-# rota. Se revalidan siempre (304 si no cambiaron). Las fotos se guardan 1 hora
-# para que un reemplazo de foto (mismo nombre de archivo) llegue rapido.
+# El HTML se revalida siempre. CSS, JS y fotos llevan ?v=<hash> en la URL (lo
+# pone tools/build.py), asi que pueden guardarse un año: si cambian, cambia la URL.
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/html "access plus 0 seconds"
-  ExpiresByType image/jpeg "access plus 1 hour"
-  ExpiresByType image/png "access plus 1 hour"
-  ExpiresByType image/webp "access plus 1 hour"
 </IfModule>
 <IfModule mod_headers.c>
   <FilesMatch "\.html$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
+  <FilesMatch "\.(css|js|webp|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(jpe?g|png|svg|ico)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/xml image/svg+xml
 </IfModule>
