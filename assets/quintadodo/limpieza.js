@@ -26,6 +26,8 @@
   // traducciones simples de hojas de texto exactas (sin rotulo entre [ ])
   var TEXTOS = {
     "recent posts": "Más artículos",
+    "grant mitchell": "Quinta Dodó",
+    "honest ubicación, lasting spaces": "Todo listo para usar",
     "crafted with care in concordia, entre ríos.": "Hecho con cariño en Concordia, Entre Ríos.",
     "© 2026 quinta dodó design. all rights reserved.": "© 2026 Quinta Dodó. Todos los derechos reservados."
   };

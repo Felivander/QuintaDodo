@@ -274,3 +274,10 @@ footer img[src*="6iyf6wxTiIm5vh1UGTqOnQPcCwg"] {
 .framer-1t89abu-container {
   display: none !important;
 }
+
+/* ---------- /la-quinta: relleno inventado del template ---------- */
+.framer-1rmfkr,   /* Team: fundadores y equipo falsos (Grant Mitchell, Cole Bradford...) */
+.framer-1a0v42x,  /* Awards: premios inventados ("AD100 - Architectural Digest"...)      */
+.framer-1ckjnec { /* Metrics: 247+ / 96% / 15+ / 5yrs, cifras que no son de la quinta    */
+  display: none !important;
+}
