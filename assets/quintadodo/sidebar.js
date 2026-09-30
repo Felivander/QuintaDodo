@@ -12,8 +12,8 @@
 
   var LINKS = [
     { t: "Piscina & Relax",         h: "/espacios/piscina",           p: "piscina" },
-    { t: "Quincho & Estufa Lepen",  h: "/espacios/quincho",              p: "quincho" },
-    { t: "Galería & Asador",        h: "/espacios/galeria-asador",    p: "galeria" },
+    { t: "Salón & Estufa Lepen",  h: "/espacios/quincho",              p: "quincho" },
+    { t: "Galería & Parrilla",        h: "/espacios/galeria-asador",    p: "galeria" },
     { t: "Parque & Animales",       h: "/espacios/parque-cancha-granja",    p: "parque" },
     { t: "Dormitorios",             h: "/espacios/dormitorios",           p: "dormitorios" },
     { t: "Galería de Fotos",        h: "/espacios",                               p: "fotos" },
