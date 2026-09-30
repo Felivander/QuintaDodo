@@ -291,3 +291,12 @@ footer h1 {
   line-height: 0.9 !important;
   white-space: nowrap !important;
 }
+
+/* ---------- Home, "Los espacios de la quinta": hueco vacio ---------- */
+/* La grilla de tarjetas (.framer-gkwf3n) tiene todas sus tarjetas ocultas pero
+   seguia ocupando lugar, y con el separador de abajo (.framer-1tf26ni) dejaban
+   unos 240px de fondo oscuro sin nada entre el titulo y la cita. */
+.framer-gkwf3n,
+.framer-1tf26ni {
+  display: none !important;
+}
