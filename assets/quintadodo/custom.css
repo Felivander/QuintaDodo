@@ -300,3 +300,9 @@ footer h1 {
 .framer-1tf26ni {
   display: none !important;
 }
+
+/* Home, cita de "Los espacios de la quinta": el bloque "DODO" con logo (.framer-q907b5)
+   sobraba arriba de la tarjeta con el nombre de la quinta. */
+.framer-q907b5 {
+  display: none !important;
+}
