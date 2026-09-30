@@ -312,3 +312,9 @@ footer h1 {
 .framer-124hxq4 {
   display: none !important;
 }
+
+/* Home, seccion "La propuesta": fuera la tarjeta con foto y "QUINTA DODO / CONCORDIA, ENTRE RIOS"
+   que quedaba debajo de la cita (.framer-xf94ee). */
+.framer-xf94ee {
+  display: none !important;
+}
