@@ -318,3 +318,15 @@ footer h1 {
 .framer-xf94ee {
   display: none !important;
 }
+
+/* Home, "La propuesta": la grilla del texto "La Quinta" (.framer-1ndtbu) reservaba dos filas de
+   294px aunque el contenido ocupa una; con dos bloques vacios (.framer-l4nkv6, .framer-kujbcq)
+   quedaban ~330px de hueco debajo del boton "Ver mas". */
+.framer-l4nkv6,
+.framer-kujbcq {
+  display: none !important;
+}
+.framer-1ndtbu {
+  height: auto !important;
+  grid-template-rows: auto !important;
+}
