@@ -281,3 +281,13 @@ footer img[src*="6iyf6wxTiIm5vh1UGTqOnQPcCwg"] {
 .framer-1ckjnec { /* Metrics: 247+ / 96% / 15+ / 5yrs, cifras que no son de la quinta    */
   display: none !important;
 }
+
+/* ---------- Footer: "Ideas Studios" gigante siempre entra en el ancho ---------- */
+/* El texto mide ~5,45 veces su tamano de fuente; con 280px fijos se cortaba en
+   pantallas angostas (y sobraba por los costados en escritorio). */
+footer h1 {
+  font-size: calc((100vw - 64px) / 5.45) !important;
+  letter-spacing: -0.07em !important;
+  line-height: 0.9 !important;
+  white-space: nowrap !important;
+}
