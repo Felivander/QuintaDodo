@@ -306,3 +306,9 @@ footer h1 {
 .framer-q907b5 {
   display: none !important;
 }
+
+/* Home, cita de "Los espacios de la quinta": fuera la tarjeta con foto y
+   "QUINTA DODO / LIVING-COMEDOR" (toda la columna .framer-124hxq4). */
+.framer-124hxq4 {
+  display: none !important;
+}
