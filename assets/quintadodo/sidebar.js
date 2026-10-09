@@ -136,7 +136,7 @@
     foot.className = "qd-foot";
     foot.innerHTML =
       '<div class="qd-foot-block"><span class="qd-tag">[ Ubicación ]</span>' +
-      '<a href="' + MAPS + '" target="_blank" rel="noopener noreferrer">Boulevard Yuquerí, Concordia, Entre Ríos ↗</a></div>' +
+      '<a href="' + MAPS + '" target="_blank" rel="noopener noreferrer">Mario Bordagaray al fondo, s/n, Villa Zorraquín, Concordia, Entre Ríos ↗</a></div>' +
       '<div class="qd-foot-block"><span class="qd-tag">[ Contacto directo ]</span>' +
       '<a href="' + WA + '" target="_blank" rel="noopener noreferrer">WhatsApp: +54 9 3454 45-9090</a></div>' +
       '<div class="qd-copy">© 2026 Quinta Dodó</div>';

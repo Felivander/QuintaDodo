@@ -26,7 +26,7 @@
       '<div class="qd-map-inner">' +
         '<span class="qd-tag qd-map-tag">[ Ubicación ]</span>' +
         '<h3 class="qd-map-title">Cómo llegar</h3>' +
-        '<p class="qd-map-text">Boulevard Yuquerí, Concordia, Entre Ríos. ' +
+        '<p class="qd-map-text">Mario Bordagaray al fondo, s/n, Villa Zorraquín, Concordia, Entre Ríos. ' +
           'Acceso pavimentado todo el año, a 15 minutos del centro.</p>' +
         '<div class="qd-map-frame">' +
           '<iframe src="' + EMBED_SRC + '" loading="lazy" ' +
