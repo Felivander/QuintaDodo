@@ -5,7 +5,7 @@
       custom.css oculta con display:none (.framer-23p62).
    2) En el drawer: la preview de "Ubicación & Mapa" muestra el mapa en vivo
       en vez de fotos (logica agregada a sidebar.js via window.QuintaMapa).
-   Ubicacion real: https://maps.app.goo.gl/2zcYFopzXsWbHBTv9 (resuelve a
+   Ubicacion real: https://maps.app.goo.gl/kKoC5ZYG9y68Vo1V8 (resuelve a
    "Quinta Dodó" en Google Maps, -31.3070718,-58.0261913).
    ========================================================================== */
 (function () {
@@ -14,7 +14,7 @@
   var LAT = "-31.3070718", LNG = "-58.0261913";
   var EMBED_SRC = "https://maps.google.com/maps?q=" + LAT + "," + LNG +
     "&z=16&output=embed";
-  var PLACE_LINK = "https://maps.app.goo.gl/2zcYFopzXsWbHBTv9";
+  var PLACE_LINK = "https://maps.app.goo.gl/kKoC5ZYG9y68Vo1V8";
 
   window.QuintaMapa = { embedSrc: EMBED_SRC, placeLink: PLACE_LINK };
 

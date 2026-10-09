@@ -7,7 +7,7 @@
   "use strict";
 
   var WA = "https://wa.me/5493454459090?text=Hola!%20Quisiera%20consultar%20por%20Quinta%20Dod%C3%B3";
-  var MAPS = "https://maps.app.goo.gl/CXFx84HNeUjMvi5PA";
+  var MAPS = "https://maps.app.goo.gl/kKoC5ZYG9y68Vo1V8";
   var P = "/assets/quintadodo/previews/";
 
   var LINKS = [
